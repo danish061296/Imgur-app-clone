@@ -1,0 +1,57 @@
+<div class="postimage-container">
+  <div class="postimage-title">
+    <h1 class="postimage-h1">Post Images Here</h1>
+  </div>
+  <div>
+    <form id="post-image" action="/posts/createPost" method="POST" enctype="multipart/form-data">
+      <small id="post-error"></small>
+      <div>
+        <input type="text" name="title" id="post-title" placeholder="post title..." required />
+      </div>
+      <div>
+        <input type="text" name="description" id="post-description" placeholder="post description..." required />
+      </div>
+      <div>
+        <label class="input-image-label" for="input-image">Upload Image</label>
+        <input type="file" name="uploadImage" id="input-image" placeholder="input image..." required />
+      </div>
+      <div>
+        <input type="checkbox" name="policy" id="policy" required />
+        <label class="policy-label" for="policy">Acceptable Policy for Uploading Images. </label>
+      </div>
+      <div>
+        <button id="post-button" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  const postForm = document.getElementById("post-image");
+  const postTitle = document.getElementById("post-title");
+  const postDescription = document.getElementById("post-description");
+  const uploadImage = document.getElementById("input-image");
+  const postError = document.getElementById("post-error");
+
+  postForm.addEventListener("submit", (e) => {
+    let errorMessages = [];
+    if (postTitle.value == '' || postTitle.value == null) {
+      errorMessages.push("Post title cannot be null!");
+    }
+
+    if (postDescription.value == '' || postDescription.value == null) {
+      errorMessages.push("Post description cannot be null!");
+    }
+    if (uploadImage.value == '' || uploadImage.value == null) {
+      errorMessages.push("Upload image cannot be null!");
+    }
+
+    if (errorMessages.length > 0) {
+      e.preventDefault();
+      postError.style.backgroundColor = "red";
+      postError.innerText = errorMessages.join(" \n");
+    }
+
+  })
+
+
+</script>

@@ -1,0 +1,55 @@
+<div class="login-container">
+  <div class="login-title">
+    <h1>LOGIN FORM</h1>
+  </div>
+  <div id="media-icons">
+    <div class="icons" id="facebook"><i class="fab fa-facebook-f"></i></div>
+    <div class="icons" id="twitter"><i class="fab fa-twitter"></i></div>
+    <div class="icons" id="google"><i class="fab fa-google"></i></div>
+    <div class="icons" id="yahoo"><i class="fab fa-yahoo"></i></div>
+  </div>
+  <div class="sign-in">Sign in with Imgur</div>
+  <div class="login-form">
+    <form id="login-form" action="/users/login" method="POST" enctype="application/x-www-form-urlencoded">
+      <small id="username-error"></small>
+      <div>
+        <input type="text" name="username" id="username" placeholder="Username" required />
+      </div>
+      <br />
+      <div class="password-div">
+        <input type="password" name="password" id="password" placeholder="Password" required />
+        <button class="signin-button" type="submit">sign in</button>
+      </div>
+    </form>
+    <div class="footer-tag">
+      <div class="account-prompt">
+        <h2>need an account?</h2>
+        <h3>
+          <a href="registration"><button class="signup-button">sign up</button></a>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const loginForm = document.getElementById("login-form");
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+  const usernameError = document.getElementById("username-error");
+
+  loginForm.addEventListener("submit", (e) => {
+    let errorMessages = [];
+    if (username.value == '' || username.value == null) {
+      errorMessages.push("Username is required!");
+    }
+    if (password.value == '' || password.value == null) {
+      errorMessages.push("Password is required!");
+    }
+
+    if (errorMessages.length > 0) {
+      e.preventDefault();
+      usernameError.innerText = errorMessages.join(" \n");
+    }
+
+  }) 
+</script>

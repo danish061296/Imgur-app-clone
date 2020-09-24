@@ -1,0 +1,88 @@
+<div class="registration-container">
+  <div class="registration-title">
+    <h1>Register Form</h1>
+  </div>
+  <div>
+    <div class="register-prompt">Register with Imgur</div>
+    <form id="register-form" class="registration-form" action="/users/register" method="POST"
+      enctype="application/x-www-form-urlencoded">
+      <small id="register-error"></small>
+      <div>
+        <input type="text" name="username" id="register-username" placeholder="Username" required />
+      </div>
+      <br />
+      <div>
+        <input type="email" name="email" id="email" placeholder="Email" required />
+      </div>
+      <br />
+      <div>
+        <input type="password" name="password" id="register-password" placeholder="Password" required />
+      </div>
+      <br />
+      <div>
+        <input type="password" name="confirm-password" id="confirm-password" placeholder="Retype Password" required />
+      </div>
+      <br />
+      <div>
+        <input type="checkbox" name="age-confirmation" id="age-confirmation" required />
+        <label class="age-confirmation-label" for="age-confirmation">I am 13+ years of age.</label>
+        <br />
+        <input type="checkbox" name="privacy" id="privacy" required />
+        <label class="privacy-label" for="privacy">TOS and Privacy Rules.</label>
+        <div class="privacy-link">
+          <a href="#">TOS and Privacy Rules</a>
+        </div>
+      </div>
+      <br />
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <div>
+      <div class="registration-footer">
+        <h2>sign in</h2>
+        <h3>
+          <a href="login"><button class="next-button">Next</button> </a>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const registerForm = document.getElementById("register-form");
+  const registerUsername = document.getElementById("register-username");
+  const email = document.getElementById("email");
+  const registerPassword = document.getElementById("register-password");
+  const registerError = document.getElementById("register-error");
+
+  registerForm.addEventListener("submit", (e) => {
+    let errorMessages = [];
+
+    if (registerUsername.value == '' || registerUsername.value == null) {
+      errorMessages.push("Username is required!");
+    }
+    /*if (registerUsername.value.length < 3) {
+      errorMessages.push("Username is required with at least 3 characters!");
+    }
+    if (email.indexOf("@") == -1 || email.value == null) {
+      errorMessages.push("Correct email format is required!");
+    }*/
+
+    if (email.indexOf("@") == -1 || email.value == null) {
+      errorMessages.push("Correct email format is required!");
+    }
+
+    if (registerPassword.value == '' || registerPassword.value == null) {
+      errorMessages.push("Password is required!");
+    }
+    /*if (registerPassword.value.length < 4) {
+      errorMessages.push("Password is required with at least 4 characters!");
+    }*/
+
+    if (errorMessages.length > 0) {
+      e.preventDefault();
+      registerError.innerText = errorMessages.join(" \n");
+    }
+  })
+
+</script>

@@ -1,0 +1,39 @@
+<div class="viewimage-container">
+  <section class="gallery">
+    <div>
+      <label class="title-label">{{currentPost.title}}</label>
+    </div>
+    <div>
+      <i class="fas fa-user-circle"></i>
+      <label class="author-label">{{currentPost.username}}</label>
+      <p class="via">2,345Views . 2h . via <strong>IPhone</strong></p>
+    </div>
+    <div class="time">
+      <label class="time-label">{{currentPost.created}}
+      </label>
+    </div>
+    <div class="image">
+      <img src="/{{currentPost.photopath}}" alt="This was a fake image" />
+    </div>
+    <div class="curr-description">
+      {{currentPost.description}}
+    </div>
+    {{!-- <form action="posts/createPost" method="POST" enctype="multipart/form-data"> --}}
+    <form id="comment-form" action="#">
+      <div class="comment">
+        <div class="show-comments"></div>
+        <textarea name="comment" placeholder="comments are disabled.." id="comment" cols="40" rows="3"></textarea>
+      </div>
+      <div>
+        <button id="send-button" type="submit">Send</button>
+      </div>
+    </form>
+  </section>
+</div>
+<script>
+
+
+
+
+
+</script>

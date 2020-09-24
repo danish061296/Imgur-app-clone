@@ -1,0 +1,14 @@
+<nav id="navbar " class="nav-bar">
+    <div class="logo">
+        <h2><a href="/">ImageApp</a></h2>
+    </div>
+    <button id="post"><a href="/postimage">Posts</a></button>
+    <input type="text" placeholder="images, oh my!" id="search-box">
+    <i id="search-button" class="fas fa-search"></i>
+    <button id="light-button">Change mode</button>
+    {{#if logged}}
+    <button id="logout-change"><a>Sign Out</a></button>
+    {{else}}
+    <button id="login-button"><a href="/login">Sign In</a></button>
+    {{/if}}
+</nav>
